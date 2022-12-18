@@ -2,11 +2,15 @@
     namespace App\Controller\Pages;
 
     use App\Utils\View;
+    use Core\Router;
 
-    class Home
-    {
-        public static function getIndexLogin()
+    class Home extends Page
+    {   
+        public static function getIndex()
         {
-            return View::renderViewContent('pages/login');
+            return View::renderViewContent('pages/login',[
+                'page'        => 'Login',
+                'description' => 'Pagina de login'
+            ]);
         }
     }
