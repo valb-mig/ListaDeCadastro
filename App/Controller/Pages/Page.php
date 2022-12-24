@@ -1,6 +1,7 @@
 <?php
     namespace App\Controller\Pages;
 
+    use App\Model\Entity\Organization;
     use App\Utils\View;
     use Core\Router;
 
@@ -13,6 +14,8 @@
 
         public static function getCurrentPage($title,$content)
         {
+            $organizationValues = new Organization;
+
             return View::renderViewContent('pages/current/page',
             [
                 'title'   => $title,
@@ -22,6 +25,8 @@
                 'content' => $content,
 
                 'footer'  => self::getFooter(),
+
+                'site'    => $organizationValues->site,
             ]);
         }
 

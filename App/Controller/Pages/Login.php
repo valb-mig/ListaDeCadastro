@@ -1,16 +1,21 @@
 <?php
     namespace App\Controller\Pages;
 
+    use App\Model\Entity\Organization;
     use App\Utils\View;
-    use Core\Router;
 
-    class Home extends Page
+    class Login extends Page
     {   
         public static function getIndex()
         {
-            return View::renderViewContent('pages/login',[
+            $organizationValues = new Organization;
+
+            $content =  View::renderViewContent('pages/login',[
+                'id'          => $organizationValues->id,
                 'page'        => 'Login',
-                'description' => 'Pagina de login'
+                'description' => 'Pagina de login',
             ]);
+
+            return parent::getCurrentPage('Login',$content);
         }
     }
