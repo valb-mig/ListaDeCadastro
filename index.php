@@ -1,13 +1,18 @@
 <?php
-use \Core\Router;
-
 require __DIR__.'/vendor/autoload.php';
 
-use \App\Controller\Pages\Home;
-use \App\Controller\Pages\Login;
-use \App\Controller\Pages\Register;
+use \App\Utils\View;
+use \App\Http\Router;
 
+define('URL','http://localhost:8080');
 
-echo Home::getIndex();
+View::init([
+    'URL' => URL,
+]);
 
-// echo Router::routes();
+$objRouter = new Router(URL);
+
+include __DIR__.'/routes/pages.php';
+
+$objRouter->run()
+          ->sendResponse();
