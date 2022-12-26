@@ -3,7 +3,6 @@
 
     use App\Model\Entity\Organization;
     use App\Utils\View;
-    use Core\Router;
 
     class Page
     {   

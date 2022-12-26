@@ -17,6 +17,6 @@
                 'about'       => $organizationValues->about, 
             ]);
 
-            return parent::getCurrentPage('Home',$content);
+            return parent::getCurrentPage('🏠 Home',$content);
         }
     }

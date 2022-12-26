@@ -16,6 +16,6 @@
                 'description' => 'Pagina de login',
             ]);
 
-            return parent::getCurrentPage('Login',$content);
+            return parent::getCurrentPage('👤 Login',$content);
         }
     }

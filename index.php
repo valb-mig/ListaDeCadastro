@@ -12,7 +12,7 @@ View::init([
 
 $objRouter = new Router(URL);
 
-include __DIR__.'/routes/pages.php';
+include __DIR__.'/Routes/pages.php';
 
 $objRouter->run()
           ->sendResponse();

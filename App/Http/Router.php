@@ -3,6 +3,7 @@
 
     use \Closure;
     use \Exception;
+    use \ReflectionFunction;
 
     class Router
     {
@@ -38,6 +39,17 @@
                 }
             }
 
+            // Variáveis da rota
+            $params['vars'] = [];
+
+            $patternVars = '/{(.*?)}/';
+
+            if(preg_match_all($patternVars,$route,$matches))
+            {
+                $route = preg_replace($patternVars,'(.*?)',$route);
+                $params['vars'] = $matches[1];
+            }
+
             // Padrão de validação (REGEX)
             
             $patternRoute = '/^'.str_replace('/','\/',$route).'$/';
@@ -63,10 +75,16 @@
 
             foreach($this->routes as $patternRoutes=>$methods)
             {
-                if(preg_match($patternRoutes,$uri)) // Verifica se a uri se encontra no padrão
+                if(preg_match($patternRoutes,$uri,$matches)) // Verifica se a uri se encontra no padrão
                 {
-                    if($methods[$httpMethod]) // Verifica se o metodo existe
+                    if(isset($methods[$httpMethod])) // Verifica se o metodo existe
                     {
+                        unset($matches[0]);
+
+                        $keys = $methods[$httpMethod]['vars'];
+                        $methods[$httpMethod]['vars'] = array_combine($keys,$matches);
+                        $methods[$httpMethod]['vars']['request'] = $this->request;
+
                         return $methods[$httpMethod];
                     }
                     throw new Exception("Metodo não permitido",405);
@@ -116,6 +134,15 @@
                 }
 
                 $args = [];
+
+                $reflection = new ReflectionFunction($route['controller']);
+                
+                foreach($reflection->getParameters() as $parameter)
+                {
+                    $name = $parameter->getName();
+                    $args[$name] = $route['vars'][$name] ?? '';
+                }
+
                 return call_user_func_array($route['controller'],$args);
 
             }catch(Exception $err)
