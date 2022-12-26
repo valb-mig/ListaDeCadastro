@@ -1,0 +1,13 @@
+/* Estilo do Footer */
+
+.footer
+{
+    position:           fixed;
+    left:               0;
+    bottom:             0;
+    padding:            8px; 
+    width:              100%;
+    text-align:         center;
+    color:            #f1f1f1;
+    background-color: #242731;
+}

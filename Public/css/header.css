@@ -1,0 +1,20 @@
+/* Estilo da Header */
+
+.header
+{
+    width:              100%;
+    display:            flex;
+    padding:            8px; 
+    width:              100%;
+    justify-content:    space-between;
+    color:            #f1f1f1;
+    background-color: #242731;
+}
+
+/* Links na header */
+
+.header a
+{
+    color:            #f1f1f1;
+    text-decoration:    none;
+}
