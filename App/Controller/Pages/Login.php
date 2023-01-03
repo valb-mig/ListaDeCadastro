@@ -13,7 +13,7 @@
             $content =  View::renderViewContent('pages/login',[
                 'id'          => $organizationValues->id,
                 'page'        => 'Login',
-                'description' => 'Pagina de login',
+                'description' => 'Página de login',
             ]);
 
             return parent::getCurrentPage('👤 Login',$content);

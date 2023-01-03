@@ -8,6 +8,7 @@
     padding:            8px; 
     width:              100%;
     text-align:         center;
+    border-top:         4px solid #2a2c32;
     color:            #f1f1f1;
     background-color: #242731;
 }

@@ -8,6 +8,6 @@
 
         public $id    = 1;
         public $name  = 'Empresa';
-        public $site  = 'www.empresa.com.br';
+        public $site  = 'www.obsespacial.com.br';
         public $about = 'sobre a empresa';
     }
